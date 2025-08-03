@@ -1,0 +1,25 @@
+{
+  "name": "@irys-gaming/contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for Irys gaming platform",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network irys-testnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network irys-mainnet",
+    "verify": "hardhat verify"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0",
+    "@irys/sdk": "^0.2.0",
+    "ethers": "^6.0.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "hardhat": "^2.19.0",
+    "chai": "^4.3.0",
+    "mocha": "^10.0.0"
+  }
+}

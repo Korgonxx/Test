@@ -1,0 +1,43 @@
+{
+  "name": "irys-gaming-platform",
+  "version": "1.0.0",
+  "description": "Decentralized gaming platform on Irys blockchain with AI-powered NPCs",
+  "private": true,
+  "workspaces": [
+    "contracts",
+    "frontend",
+    "ai",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "dev": "npm run dev --workspace=frontend",
+    "compile": "npm run compile --workspace=contracts",
+    "deploy:testnet": "npm run deploy:testnet --workspace=scripts",
+    "deploy:mainnet": "npm run deploy:mainnet --workspace=scripts",
+    "setup:game": "node scripts/setup-game.js",
+    "upload-models": "npm run upload-models --workspace=ai"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/irys-gaming-platform"
+  },
+  "keywords": [
+    "irys",
+    "blockchain",
+    "gaming",
+    "ai",
+    "npc",
+    "decentralized",
+    "web3"
+  ],
+  "license": "MIT"
+}
