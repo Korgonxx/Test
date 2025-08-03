@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 180 100% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-cyber-darker text-foreground font-mono;
+    background-image: 
+      linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.03) 100%),
+      linear-gradient(0deg, transparent 98%, rgba(0, 255, 255, 0.03) 100%);
+    background-size: 50px 50px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .cyber-border {
+    @apply border border-neon-blue/30 relative;
+  }
+  
+  .cyber-border::before {
+    content: '';
+    @apply absolute -inset-px bg-gradient-to-r from-transparent via-neon-blue/50 to-transparent;
+    @apply animate-pulse-slow;
+    z-index: -1;
+  }
+  
+  .cyber-glow {
+    @apply shadow-neon text-neon-blue animate-glow;
+  }
+  
+  .cyber-button {
+    @apply relative px-6 py-3 font-cyber font-bold text-sm uppercase tracking-wider;
+    @apply bg-transparent border border-neon-blue text-neon-blue;
+    @apply hover:bg-neon-blue hover:text-cyber-dark transition-all duration-300;
+    @apply hover:shadow-neon focus:outline-none focus:shadow-neon;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  
+  .cyber-button::before {
+    content: '';
+    @apply absolute inset-0 bg-neon-blue opacity-0 transition-opacity duration-300;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    z-index: -1;
+  }
+  
+  .cyber-button:hover::before {
+    @apply opacity-100;
+  }
+  
+  .cyber-card {
+    @apply bg-cyber-dark/80 backdrop-blur-md border border-neon-blue/20;
+    @apply shadow-cyber p-6 relative overflow-hidden;
+    clip-path: polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%);
+  }
+  
+  .cyber-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-blue to-transparent;
+    @apply animate-pulse-slow;
+  }
+  
+  .cyber-input {
+    @apply bg-cyber-dark/50 border border-neon-blue/30 text-neon-blue placeholder-neon-blue/50;
+    @apply focus:border-neon-blue focus:shadow-neon-sm outline-none transition-all duration-300;
+    @apply font-mono px-4 py-2;
+  }
+  
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .neon-text {
+    @apply text-neon-blue;
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 40px currentColor;
+  }
+  
+  .matrix-bg {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+  }
+  
+  .matrix-char {
+    @apply text-neon-green/20 font-mono text-sm absolute animate-matrix;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  .scan-line {
+    @apply absolute top-0 left-0 w-1 h-full bg-neon-blue/50 animate-scan;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  }
+  
+  .cyber-table {
+    @apply w-full border-collapse;
+  }
+  
+  .cyber-table th,
+  .cyber-table td {
+    @apply border border-neon-blue/20 px-4 py-2 text-left;
+  }
+  
+  .cyber-table th {
+    @apply bg-neon-blue/10 text-neon-blue font-cyber font-bold uppercase text-xs tracking-wider;
+  }
+  
+  .cyber-table tr:hover {
+    @apply bg-neon-blue/5;
+  }
+  
+  .loading-dots::after {
+    content: '';
+    @apply inline-block w-2 h-2 bg-current rounded-full ml-1 animate-pulse;
+    animation-delay: 0s;
+  }
+  
+  .status-online {
+    @apply text-neon-green;
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .status-offline {
+    @apply text-red-500;
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .status-warning {
+    @apply text-neon-yellow;
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .glitch {
+    position: relative;
+  }
+  
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .glitch::before {
+    animation: glitch-1 0.3s infinite linear alternate-reverse;
+    color: #ff0040;
+    z-index: -1;
+  }
+  
+  .glitch::after {
+    animation: glitch-2 0.3s infinite linear alternate-reverse;
+    color: #00ffff;
+    z-index: -2;
+  }
+  
+  @keyframes glitch-1 {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(-2px); }
+    60% { transform: translateX(2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes glitch-2 {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.5);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Disable text selection for certain elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

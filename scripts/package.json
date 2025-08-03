@@ -1,0 +1,21 @@
+{
+  "name": "@irys-gaming/scripts",
+  "version": "1.0.0",
+  "description": "Testing and deployment scripts",
+  "main": "index.js",
+  "scripts": {
+    "deploy:testnet": "node deploy-testnet.js",
+    "deploy:mainnet": "node deploy-mainnet.js",
+    "setup-game": "node setup-game.js",
+    "test-integration": "node test-integration.js"
+  },
+  "dependencies": {
+    "ethers": "^6.0.0",
+    "@irys/sdk": "^0.2.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
